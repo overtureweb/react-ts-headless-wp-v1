@@ -59,7 +59,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 			                          owd_tags: tags,
 			                          owd_categories: categories
 		                          }: Post) =>
-			<Container className="post" key={uuidv4()} fluid>
+			<main className="post" key={uuidv4()} >
 				<Helmet>
 					<title>{title}</title>
 					<meta name="description" content={excerpt}/>
@@ -118,7 +118,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 						/>
 					</Col>
 				</Row>
-			</Container>
+			</main>
 		)
 	)
 };

@@ -4,8 +4,8 @@
 	<meta charset="utf-8"/>
 	<link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
 	<link rel="stylesheet" id="wp-block-library-css"
-	      href="http://overtureweb/wp/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
-	<link rel="stylesheet" href="http://overtureweb/wp/wp-content/themes/owdheadless/style.css" type="text/css"
+	      href="/wp/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/wp/wp-content/themes/owdheadless/style.css" type="text/css"
 	      media="all">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<meta name="theme-color" content="#000000"/>
@@ -31,7 +31,9 @@
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
-<div id="root"></div>
+<div class="container-fluid">
+	<div id="root"></div>
+</div>
 <!--
   This HTML file is a template.
   If you open it directly in the browser, you will see an empty page.

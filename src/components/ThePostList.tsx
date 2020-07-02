@@ -40,7 +40,7 @@ export const ThePostList = ({postData, totalPages}: any) => {
 	const currentPage = (state && state.currentPage) || 1;
 	const title = slug && slug.split("-").map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(" ");
 	return (
-		<Container className="blog" fluid>
+		<main className="blog">
 			<Helmet>
 				<meta name="description" content={`Articles written by Overture on the topic of ${title}`}/>
 				<meta property="og:site_name" content="Overture Web Development"/>
@@ -143,6 +143,6 @@ export const ThePostList = ({postData, totalPages}: any) => {
 			<PageNumbers totalPages={totalPages}
 			             currentPage={currentPage}
 			/>
-		</Container>
+		</main>
 	)
 }

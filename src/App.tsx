@@ -11,7 +11,7 @@ import {PostController} from "./PostController";
 
 export const App: React.FC<any> = () => {
 	return (
-			<Router>
+			<Router basename="/blog">
 				<Switch>
 					<Route exact path="/">
 						<PostListController/>
