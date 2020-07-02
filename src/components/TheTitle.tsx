@@ -6,7 +6,7 @@ type Props = {
 	classes?: string;
 }
 
-const TheTitle: React.FC<Props> = ({title, classes, wrapper: Element = "h1"}): JSX.Element => <header><Element
-	className={classes}>{title}</Element></header>;
+const TheTitle: React.FC<Props> = ({title, classes, wrapper: Element = "h1"}): JSX.Element => <Element
+	className={classes}>{title}</Element>;
 
 export default TheTitle;

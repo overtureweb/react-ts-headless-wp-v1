@@ -1,6 +1,6 @@
 import React from "react";
 import {useHistory, useParams} from "react-router-dom";
-import {Col, Container, Media, Row} from "react-bootstrap";
+import {Col, Media, Row} from "react-bootstrap";
 import {Helmet} from "react-helmet-async";
 import TheTaxonomies from "./TheTaxonomies";
 import TheTitle from "./TheTitle";
@@ -37,7 +37,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 	const history = useHistory();
 	const [slug] = Object.values(useParams());
 	const title = slug && slug.split("-").map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(" ");
-	const url =`${PROJECT_ROOT}${history.location.pathname}`
+	const url = `${PROJECT_ROOT}${history.location.pathname}`
 	const disqusShortname = DISQUS_SHORTNAME
 	const disqusConfig = {
 		url: url,
@@ -59,7 +59,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 			                          owd_tags: tags,
 			                          owd_categories: categories
 		                          }: Post) =>
-			<main className="post" key={uuidv4()} >
+			<div className="post" key={uuidv4()}>
 				<Helmet>
 					<title>{title}</title>
 					<meta name="description" content={excerpt}/>
@@ -73,52 +73,60 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 					<meta name="twitter:creator" content="@overturewebdev"/>
 					<meta name="twitter:card" content="summary"/>
 				</Helmet>
-				<Row className="justify-content-center my-5">
-					<Col md={8} lg={7}>
-						<TheTaxonomies terms={categories}
-						               linkClasses="mr-3 mb-3 btn btn-sm btn-outline-danger"
-						               type="categories">
-							{(links) => <p className="mb-0 small">{links}</p>}
-						</TheTaxonomies>
-						<TheTitle title={title}/>
-						<p>{excerpt}</p>
-						<SocialSharingButtons url={url}/>
-						<Media className="mb-3">
-							<TheAuthor author={author}
-							           classes="align-self-center">
-								{(name: string, src: string) =>
-									<TheAuthor.Avatar
-										classes="blog__author-avatar mr-1"
-										alt={name}
-										src={src}/>}
-							</TheAuthor>
-							<Media.Body>
+				<header>
+					<Row className="justify-content-center blog__header">
+						<Col className="text-center align-self-end" xs={12} md={8} lg={6}>
+							<TheTitle classes="text-center marquee__title courier-std text-white" title={title}/>
+							<p>{excerpt}</p>
+						</Col>
+					</Row>
+				</header>
+				<main>
+					<Row className="justify-content-center my-5">
+						<Col md={8} lg={7}>
+							<TheTaxonomies terms={categories}
+							               linkClasses="mr-3 mb-3 btn btn-sm btn-outline-danger"
+							               type="categories">
+								{(links) => <p className="mb-0 small">{links}</p>}
+							</TheTaxonomies>
+							<SocialSharingButtons url={url}/>
+							<Media className="mb-3">
 								<TheAuthor author={author}
-								           classes="small">
-									{(name: string) =>
-										<TheAuthor.Name name={name}/>}
+								           classes="align-self-center">
+									{(name: string, src: string) =>
+										<TheAuthor.Avatar
+											classes="blog__author-avatar mr-1"
+											alt={name}
+											src={src}/>}
 								</TheAuthor>
-								<TheDate date={date}
-								         classes="small mb-1"/>
-							</Media.Body>
-						</Media>
-						{image &&
-						<TheFeaturedImage image={image}
-						                  classes="post__featured-image"/>}
-						<TheContent content={content}/>
-						<TheTaxonomies terms={tags}
-						               type="tags"
-						               linkClasses="btn btn-sm btn-outline-primary mr-3 mb-3">
-							{(links) => <div className="my-3">{links}</div>}
-						</TheTaxonomies>
-						<button className="my-4 btn btn-primary" onClick={() => history.goBack()}>Go Back</button>
-						<Disqus.DiscussionEmbed
-							shortname={disqusShortname}
-							config={disqusConfig}
-						/>
-					</Col>
-				</Row>
-			</main>
+								<Media.Body>
+									<TheAuthor author={author}
+									           classes="small">
+										{(name: string) =>
+											<TheAuthor.Name name={name}/>}
+									</TheAuthor>
+									<TheDate date={date}
+									         classes="small mb-1"/>
+								</Media.Body>
+							</Media>
+							{image &&
+							<TheFeaturedImage image={image}
+							                  classes="post__featured-image"/>}
+							<TheContent content={content}/>
+							<TheTaxonomies terms={tags}
+							               type="tags"
+							               linkClasses="btn btn-sm btn-outline-primary mr-3 mb-3">
+								{(links) => <div className="my-3">{links}</div>}
+							</TheTaxonomies>
+							<button className="my-4 btn btn-primary" onClick={() => history.goBack()}>Go Back</button>
+							<Disqus.DiscussionEmbed
+								shortname={disqusShortname}
+								config={disqusConfig}
+							/>
+						</Col>
+					</Row>
+				</main>
+			</div>
 		)
 	)
 };
