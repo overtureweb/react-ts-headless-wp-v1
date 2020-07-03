@@ -9,7 +9,7 @@
 	      media="all">
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<meta name="theme-color" content="#000000"/>
-	<!--	for some reason react helmet adds a second meta dscription, the data-rh solves this-->
+	<!--	for some reason react helmet adds a second meta description, the data-rh solves this-->
 	<meta name="description" content="Web site created using create-react-app" data-rh="true"/>
 	<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png"/>
 	<!--
@@ -32,7 +32,14 @@
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div class="container-fluid">
-	<div id="root"></div>
+	<header>
+		<div class="row justify-content-center about__header">
+			<div class="col-12 col-md-8 col-lg-6 align-self-end">
+				<h1 class="text-center marquee__title courier-std">The Source</h1>
+			</div>
+		</div>
+	</header>
+	<div data-max-per-page="50" id="root"></div>
 </div>
 <!--
   This HTML file is a template.

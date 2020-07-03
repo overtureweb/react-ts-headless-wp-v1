@@ -4,6 +4,6 @@ type Props = {
 	content: string;
 }
 
-const TheContent: React.FC<Props> = ({content}) => <article dangerouslySetInnerHTML={{__html: content}}/>
+const TheContent: React.FC<Props> = ({content}) => <div dangerouslySetInnerHTML={{__html: content}}/>
 
 export default TheContent;

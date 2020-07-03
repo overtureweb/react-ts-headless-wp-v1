@@ -6,13 +6,13 @@ type Props = {
 	terms: object[];
 	type: string;
 	children: (terms: JSX.Element[]) => JSX.Element;
-	linkClasses?: string;
+	classes?: string;
 }
 //TODO consolidate the individual props into an object
-const TheTaxonomies: React.FC<Props> = ({terms, type, linkClasses, children}): JSX.Element => {
+const TheTaxonomies: React.FC<Props> = ({terms, type, classes, children}): JSX.Element => {
 	const links: JSX.Element[] = terms.map(({slug, name, term_id}: any) =>
 		<Link key={uuidv4()}
-		      className={linkClasses}
+		      className={classes}
 		      to={{pathname: `/${type}/${slug}`, state: {term_id, currentPage: 1}}}>{name}</Link>
 	)
 	return children(links);

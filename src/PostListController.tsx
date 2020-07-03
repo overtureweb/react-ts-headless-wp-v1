@@ -2,7 +2,6 @@ import {useState, useEffect} from 'react';
 import './App.scss';
 import {useLocation, useRouteMatch, useParams} from "react-router-dom";
 import {ThePostList} from "./components/ThePostList";
-import {API_PATH} from "./constants/";
 import {useData} from "./hooks/useData";
 
 export const PostListController: any = () => {
@@ -26,7 +25,7 @@ export const PostListController: any = () => {
 			if (!term_id && taxonomyType && !didFetchTermId) {
 				try {
 					setDidFetchTermId(true)
-					const response = await fetch(`${API_PATH}${taxonomyType}?slug=${slug}`);
+					const response = await fetch(`${process.env.REACT_APP_API_PATH}${taxonomyType}?slug=${slug}`);
 					const [taxObject] = await response.json();
 					setFetchedTermId(taxObject.id);
 				} catch (e) {
@@ -48,10 +47,10 @@ export const PostListController: any = () => {
 		const t: number | undefined = term_id || fetchedTermId;
 		if (!taxonomyType) {
 			//home page
-			setUrl(`${API_PATH}posts?orderby=date&order=desc&per_page=${maxPerPage}&page=${currentPage}`);
+			setUrl(`${process.env.REACT_APP_API_PATH}posts?orderby=date&order=desc&per_page=${maxPerPage}&page=${currentPage}`);
 		} else if (t) {
 			//clicked through to filtered results page
-			setUrl(`${API_PATH}posts?${t && taxonomyType ? `${taxonomyType}=${t}&` : ``}orderby=date&order=desc&per_page=${maxPerPage}&page=${currentPage}`);
+			setUrl(`${process.env.REACT_APP_API_PATH}posts?${t && taxonomyType ? `${taxonomyType}=${t}&` : ``}orderby=date&order=desc&per_page=${maxPerPage}&page=${currentPage}`);
 		}
 	}, [currentPage, fetchedTermId, term_id, taxonomyType])
 

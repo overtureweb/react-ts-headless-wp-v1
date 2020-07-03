@@ -10,7 +10,6 @@ import TheFeaturedImage from "./TheFeaturedImage";
 import TheContent from "./TheContent";
 import {v4 as uuidv4} from "uuid";
 import Disqus from "disqus-react";
-import {DISQUS_SHORTNAME, PROJECT_ROOT} from "../constants/";
 import SocialSharingButtons from "./SocialSharingButtons";
 
 type Post = {
@@ -37,8 +36,8 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 	const history = useHistory();
 	const [slug] = Object.values(useParams());
 	const title = slug && slug.split("-").map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(" ");
-	const url = `${PROJECT_ROOT}${history.location.pathname}`
-	const disqusShortname = DISQUS_SHORTNAME
+	const url = `${process.env.REACT_APP_PROJECT_ROOT}${history.location.pathname}`;
+	const disqusShortname = process.env.DISQUS_SHORTNAME || "";
 	const disqusConfig = {
 		url: url,
 		identifier: slug,
@@ -73,22 +72,16 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 					<meta name="twitter:creator" content="@overturewebdev"/>
 					<meta name="twitter:card" content="summary"/>
 				</Helmet>
-				<header>
-					<Row className="justify-content-center blog__header">
-						<Col className="text-center align-self-end" xs={12} md={8} lg={6}>
-							<TheTitle classes="text-center marquee__title courier-std text-white" title={title}/>
-							<p>{excerpt}</p>
-						</Col>
-					</Row>
-				</header>
 				<main>
 					<Row className="justify-content-center my-5">
 						<Col md={8} lg={7}>
 							<TheTaxonomies terms={categories}
-							               linkClasses="mr-3 mb-3 btn btn-sm btn-outline-danger"
+							               classes="mr-3 mb-3 btn btn-sm btn-outline-danger"
 							               type="categories">
 								{(links) => <p className="mb-0 small">{links}</p>}
 							</TheTaxonomies>
+							<TheTitle title={title}/>
+							<p className="blog__excerpt">{excerpt}</p>
 							<SocialSharingButtons url={url}/>
 							<Media className="mb-3">
 								<TheAuthor author={author}
@@ -115,7 +108,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 							<TheContent content={content}/>
 							<TheTaxonomies terms={tags}
 							               type="tags"
-							               linkClasses="btn btn-sm btn-outline-primary mr-3 mb-3">
+							               classes="btn btn-sm btn-outline-primary mr-3 mb-3">
 								{(links) => <div className="my-3">{links}</div>}
 							</TheTaxonomies>
 							<button className="my-4 btn btn-primary" onClick={() => history.goBack()}>Go Back</button>
