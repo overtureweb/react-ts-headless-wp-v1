@@ -37,7 +37,6 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 	const [slug] = Object.values(useParams());
 	const title = slug && slug.split("-").map(e => e.charAt(0).toUpperCase() + e.slice(1)).join(" ");
 	const url = `${process.env.REACT_APP_PROJECT_ROOT}${history.location.pathname}`;
-	const disqusShortname = process.env.DISQUS_SHORTNAME || "";
 	const disqusConfig = {
 		url: url,
 		identifier: slug,
@@ -76,11 +75,11 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 					<Row className="justify-content-center my-5">
 						<Col md={8} lg={7}>
 							<TheTaxonomies terms={categories}
-							               classes="mr-3 mb-3 btn btn-sm btn-outline-danger"
+							               classes="mr-3 mb-3 btn btn-sm btn-outline-categories"
 							               type="categories">
 								{(links) => <p className="mb-0 small">{links}</p>}
 							</TheTaxonomies>
-							<TheTitle title={title}/>
+							<TheTitle classes="courier-std" title={title}/>
 							<p className="blog__excerpt">{excerpt}</p>
 							<SocialSharingButtons url={url}/>
 							<Media className="mb-3">
@@ -108,12 +107,12 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 							<TheContent content={content}/>
 							<TheTaxonomies terms={tags}
 							               type="tags"
-							               classes="btn btn-sm btn-outline-primary mr-3 mb-3">
+							               classes="btn btn-sm btn-outline-tags mr-3 mb-3">
 								{(links) => <div className="my-3">{links}</div>}
 							</TheTaxonomies>
 							<button className="my-4 btn btn-primary" onClick={() => history.goBack()}>Go Back</button>
 							<Disqus.DiscussionEmbed
-								shortname={disqusShortname}
+								shortname={process.env.REACT_APP_DISQUS_SHORTNAME || ""}
 								config={disqusConfig}
 							/>
 						</Col>

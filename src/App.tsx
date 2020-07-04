@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import './styles.scss';
+import './styles/styles.scss';
 import {PostListController} from './PostListController';
 import {
 	BrowserRouter as Router,

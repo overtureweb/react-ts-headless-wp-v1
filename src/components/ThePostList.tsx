@@ -99,7 +99,7 @@ export const ThePostList = ({postData, totalPages}: any) => {
 												pathname: `/${slug}`,
 												state: {currentPage: currentPage}
 											}}>
-												<TheTitle classes="mb-3" title={title} wrapper="h2"/>
+												<TheTitle classes="mb-3 courier-std" title={title} wrapper="h2"/>
 											</Link>
 											<Media className="mb-3">
 												<TheAuthor author={author}
@@ -128,7 +128,7 @@ export const ThePostList = ({postData, totalPages}: any) => {
 												}}>{excerpt}</Link>
 											<TheTaxonomies terms={tags}
 											               type="tags"
-											               classes="btn btn-sm btn-outline-primary mr-3 mb-3">
+											               classes="btn btn-sm btn-outline-tags mr-3 mb-3">
 												{(links) => <div className="my-3">{links}</div>}
 											</TheTaxonomies>
 										</Media.Body>

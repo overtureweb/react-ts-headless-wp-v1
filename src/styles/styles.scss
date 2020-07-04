@@ -1,17 +1,21 @@
-@import "~bootstrap/scss/bootstrap";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "fonts";
+@import "colors";
 
-/**
-Table of Contents
-blog
-	bloglist
-	blogpost
- */
+html {
+	font-size: 18px;
+}
 
-//default font and line spacing settings
-//html {
-//	font-size: 18px;
-//}
-//
+body {
+	font-family: $futura-pt, sans-serif !important;
+	font-weight: 300;
+	line-height: 1.5;
+	color: $owd-default-color;
+}
+
+a {
+	color: $owd-default-color;
+}
 
 .btn {
 	border-radius: 0;
@@ -27,6 +31,7 @@ blog
 	&__featured-image {
 		width: 100%;
 	}
+
 	&__author-avatar {
 		height: 40px;
 		width: 40px;
@@ -43,7 +48,6 @@ blog
 		color: #777;
 		display: inline-block;
 	}
-
 
 	a {
 		&.excerpt--text-decoration {
@@ -84,14 +88,57 @@ blog
 	}
 	.post {
 		&__featured-image {
-			margin-right:initial;
+			margin-right: initial;
 			margin-left: initial;
 		}
+
 		&__featured-image-caption {
 			text-align: left;
 		}
 	}
 }
+
+.btn-primary {
+	color: #fff;
+	background-color: #12a6d6;
+	border-color: #12a6d6;
+
+	&:hover {
+		background-color: darken(#12a6d6, 10%);
+		border-color: darken(#12a6d6, 10%);
+	}
+}
+
+.btn-outline-tags {
+	color: #43aa8c;
+	border-color: #43aa8c;
+
+	&:hover {
+		color: #fff;
+		background-color: #43aa8c;
+		border-color: #43aa8c;
+	}
+}
+
+.btn-outline-categories {
+	color: #ac0f60;
+	border-color: #ac0f60;
+
+	&:hover {
+		color: #fff;
+		background-color: #ac0f60;
+		border-color: #ac0f60;
+	}
+}
+
+a.blog.post__content.post__content--blue-link {
+	color: $owd-blue;
+
+	&:hover {
+		color: darken($owd-blue, 10%);
+	}
+}
+
 
 
 

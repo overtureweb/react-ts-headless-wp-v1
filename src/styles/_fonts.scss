@@ -1,0 +1,15 @@
+$futura-pt: "futura-pt", sans-serif;
+$courier-std: "courier-std", monospace;
+
+.courier-std {
+	font-family: $courier-std, monospace;
+}
+
+.futura-pt {
+	font-family: $futura-pt, Arial;
+	font-weight: 300;
+
+	&--bold {
+		font-weight: 900;
+	}
+}

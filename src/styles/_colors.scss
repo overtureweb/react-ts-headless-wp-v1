@@ -1,0 +1,30 @@
+$owd-default-color: rgb(70, 74, 76); //#464a4c
+$owd-violet: rgb(91, 89, 154); //#5b599a
+$owd-blue: rgb(18, 166, 214); //#12a6d6
+$owd-green: rgb(67, 170, 140); //#43aa8c
+$owd-magenta: rgb(172, 15, 96); //#ac0f60
+$owd-faded-black: rgba(0,0,0,.30);
+
+.owd-default-color {
+  color: $owd-default-color;
+}
+
+.owd-violet {
+  color: $owd-violet;
+}
+
+.owd-blue {
+  color: $owd-blue;
+}
+
+.owd-green {
+  color: $owd-green;
+}
+
+.owd-magenta {
+  color: $owd-magenta;
+}
+
+.owd-faded-black {
+  color: $owd-faded-black;
+}
