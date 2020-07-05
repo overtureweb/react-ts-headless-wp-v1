@@ -101,7 +101,7 @@ export const ThePostList = ({postData, totalPages}: any) => {
 											}}>
 												<TheTitle classes="mb-3 courier-std" title={title} wrapper="h2"/>
 											</Link>
-											<Media className="mb-3">
+											<Media className="blog__author blog__author--line-height mb-3">
 												<TheAuthor author={author}
 												           classes="align-self-center">
 													{(name: string, src: string) =>

@@ -1,6 +1,6 @@
 import React from "react";
 import {useHistory, useParams} from "react-router-dom";
-import {Col, Media, Row} from "react-bootstrap";
+import {Col, Media, Row, Accordion, Card, Button} from "react-bootstrap";
 import {Helmet} from "react-helmet-async";
 import TheTaxonomies from "./TheTaxonomies";
 import TheTitle from "./TheTitle";
@@ -42,6 +42,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 		identifier: slug,
 		title: title
 	}
+	console.log(process.env.PUBLIC_URL);
 	return (
 		postData && postData.map(({
 			                          title: {
@@ -72,6 +73,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 					<meta name="twitter:card" content="summary"/>
 				</Helmet>
 				<main>
+
 					<Row className="justify-content-center my-5">
 						<Col md={8} lg={7}>
 							<TheTaxonomies terms={categories}
@@ -82,7 +84,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 							<TheTitle classes="courier-std" title={title}/>
 							<p className="blog__excerpt">{excerpt}</p>
 							<SocialSharingButtons url={url}/>
-							<Media className="mb-3">
+							<Media className="mb-3 blog__author blog__author--line-height">
 								<TheAuthor author={author}
 								           classes="align-self-center">
 									{(name: string, src: string) =>
@@ -108,13 +110,25 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 							<TheTaxonomies terms={tags}
 							               type="tags"
 							               classes="btn btn-sm btn-outline-tags mr-3 mb-3">
-								{(links) => <div className="my-3">{links}</div>}
+								{(links) => <div className="my-4">{links}</div>}
 							</TheTaxonomies>
-							<button className="my-4 btn btn-primary" onClick={() => history.goBack()}>Go Back</button>
-							<Disqus.DiscussionEmbed
-								shortname={process.env.REACT_APP_DISQUS_SHORTNAME || ""}
-								config={disqusConfig}
-							/>
+							<button className="btn btn-primary" onClick={() => history.goBack()}>Go Back</button>
+							<Accordion className="my-5">
+								<Card>
+									<Card.Header className="text-center">
+										<Accordion.Toggle as={Button}
+										                  variant="link" eventKey="0">
+											Comments
+										</Accordion.Toggle>
+									</Card.Header>
+									<Accordion.Collapse eventKey="0">
+										<Card.Body><Disqus.DiscussionEmbed
+											shortname={process.env.REACT_APP_DISQUS_SHORTNAME || ""}
+											config={disqusConfig}
+										/></Card.Body>
+									</Accordion.Collapse>
+								</Card>
+							</Accordion>
 						</Col>
 					</Row>
 				</main>

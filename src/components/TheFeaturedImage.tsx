@@ -9,7 +9,7 @@ type Props = {
 }
 
 const TheFeaturedImage: React.FC<Props> = ({image: {url, caption}, classes}): JSX.Element =>
-	<div className="mb-5">
+	<div className="mb-4">
 		<div className={classes}
 		     style={{background: `url(${url}) no-repeat center bottom / cover`}}>
 		</div>
