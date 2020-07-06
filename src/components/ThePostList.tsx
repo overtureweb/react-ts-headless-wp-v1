@@ -129,7 +129,7 @@ export const ThePostList = ({postData, totalPages}: any) => {
 												}}>{excerpt}</Link>
 											<TheTaxonomies terms={tags}
 											               type="tags"
-											               classes="btn btn-sm btn-outline-green mr-3 mb-3">
+											               classes="btn btn-sm btn-outline-owd-green mr-3 mb-3">
 												{(links) => <div className="my-3">{links}</div>}
 											</TheTaxonomies>
 										</Media.Body>

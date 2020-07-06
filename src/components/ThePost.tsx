@@ -21,7 +21,11 @@ type Post = {
 	},
 	owd_excerpt: string;
 	date: string;
-	owd_featured_image: object;
+	owd_featured_image: {
+		url: string;
+		alt: string;
+		caption: string;
+	};
 	owd_author: {
 		term_id: number;
 		avatar: string;
@@ -66,7 +70,7 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 					<meta property="og:title" content={title}/>
 					<meta property="og:description" content={excerpt}/>
 					<meta property="og:type" content="website"/>
-					<meta property="og:image" content="https://www.overtureweb.com/images/adstfo/theater_curtains.jpg"/>
+					<meta property="og:image" content={image.url}/>
 					<meta name="twitter:site" content="@overturewebdev"/>
 					<meta name="twitter:creator" content="@overturewebdev"/>
 					<meta name="twitter:card" content="summary"/>
