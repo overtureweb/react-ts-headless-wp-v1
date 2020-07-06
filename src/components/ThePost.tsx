@@ -42,7 +42,6 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 		identifier: slug,
 		title: title
 	}
-	console.log(process.env.PUBLIC_URL);
 	return (
 		postData && postData.map(({
 			                          title: {
@@ -73,16 +72,15 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 					<meta name="twitter:card" content="summary"/>
 				</Helmet>
 				<main>
-
 					<Row className="justify-content-center my-5">
 						<Col md={8} lg={7}>
 							<TheTaxonomies terms={categories}
-							               classes="mr-3 mb-3 btn btn-sm btn-outline-categories"
+							               classes="mr-3 mb-3 btn btn-sm btn-outline-owd-magenta"
 							               type="categories">
 								{(links) => <p className="mb-0 small">{links}</p>}
 							</TheTaxonomies>
 							<TheTitle classes="courier-std" title={title}/>
-							<p className="blog__excerpt">{excerpt}</p>
+							<p className="post__excerpt">{excerpt}</p>
 							<SocialSharingButtons url={url}/>
 							<Media className="mb-3 blog__author blog__author--line-height">
 								<TheAuthor author={author}
@@ -106,26 +104,34 @@ export const ThePost: React.FC<string> = ({postData}: any) => {
 							{image &&
 							<TheFeaturedImage image={image}
 							                  classes="post__featured-image"/>}
-							<TheContent content={content}/>
+							<TheContent content={content} classes="mb-4"/>
+							<hr/>
 							<TheTaxonomies terms={tags}
 							               type="tags"
-							               classes="btn btn-sm btn-outline-tags mr-3 mb-3">
-								{(links) => <div className="my-4">{links}</div>}
+							               classes="btn btn-sm btn-outline-owd-green mr-3 mb-3">
+								{(links) => <div className="my-4 pt-2">{links}</div>}
 							</TheTaxonomies>
-							<button className="btn btn-primary" onClick={() => history.goBack()}>Go Back</button>
+							<button className="btn btn-primary" onClick={() => history.goBack()}>&#10094; Go Back
+							</button>
 							<Accordion className="my-5">
-								<Card>
-									<Card.Header className="text-center">
+								<Card style={{border: "none"}}>
+									<Card.Header style={{background: "transparent"}} className="text-center">
 										<Accordion.Toggle as={Button}
-										                  variant="link" eventKey="0">
-											Comments
+										                  variant="outline-owd-violet"
+										                  className="w-75" eventKey="0">
+											<Disqus.CommentCount
+												shortname={process.env.REACT_APP_DISQUS_SHORTNAME || ""}
+												config={disqusConfig}
+											/>
 										</Accordion.Toggle>
 									</Card.Header>
 									<Accordion.Collapse eventKey="0">
-										<Card.Body><Disqus.DiscussionEmbed
-											shortname={process.env.REACT_APP_DISQUS_SHORTNAME || ""}
-											config={disqusConfig}
-										/></Card.Body>
+										<Card.Body>
+											<Disqus.DiscussionEmbed
+												shortname={process.env.REACT_APP_DISQUS_SHORTNAME || ""}
+												config={disqusConfig}
+											/>
+										</Card.Body>
 									</Accordion.Collapse>
 								</Card>
 							</Accordion>
