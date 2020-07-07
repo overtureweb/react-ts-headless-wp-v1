@@ -17,7 +17,6 @@ export const useData = (url: string, Component: any): JSX.Element => {
 				setTotalPages(response.headers.get("X-WP-TotalPages"));
 				setPostData(json);
 				setStatus("success");
-				window.scrollTo(0, 0);
 			} catch (e) {
 				console.log(e.message)
 				setStatus("error")

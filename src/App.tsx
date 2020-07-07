@@ -8,10 +8,12 @@ import {
 	Route,
 } from "react-router-dom"
 import {PostController} from "./PostController";
+import ScrollToTop from "./ScrollToTop";
 
 export const App: React.FC<any> = () => {
 	return (
 			<Router basename="/blog">
+				<ScrollToTop/>
 				<Switch>
 					<Route exact path="/">
 						<PostListController/>
